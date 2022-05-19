@@ -1,0 +1,12 @@
+E:\19. PROJECTDEMOSOLUTION\NinePlus.Blogs\Core.Domain\bin\Debug\net5.0\Core.Domain.deps.json
+E:\19. PROJECTDEMOSOLUTION\NinePlus.Blogs\Core.Domain\bin\Debug\net5.0\Core.Domain.dll
+E:\19. PROJECTDEMOSOLUTION\NinePlus.Blogs\Core.Domain\bin\Debug\net5.0\ref\Core.Domain.dll
+E:\19. PROJECTDEMOSOLUTION\NinePlus.Blogs\Core.Domain\bin\Debug\net5.0\Core.Domain.pdb
+E:\19. PROJECTDEMOSOLUTION\NinePlus.Blogs\Core.Domain\obj\Debug\net5.0\Core.Domain.GeneratedMSBuildEditorConfig.editorconfig
+E:\19. PROJECTDEMOSOLUTION\NinePlus.Blogs\Core.Domain\obj\Debug\net5.0\Core.Domain.AssemblyInfoInputs.cache
+E:\19. PROJECTDEMOSOLUTION\NinePlus.Blogs\Core.Domain\obj\Debug\net5.0\Core.Domain.AssemblyInfo.cs
+E:\19. PROJECTDEMOSOLUTION\NinePlus.Blogs\Core.Domain\obj\Debug\net5.0\Core.Domain.csproj.CoreCompileInputs.cache
+E:\19. PROJECTDEMOSOLUTION\NinePlus.Blogs\Core.Domain\obj\Debug\net5.0\Core.Domain.dll
+E:\19. PROJECTDEMOSOLUTION\NinePlus.Blogs\Core.Domain\obj\Debug\net5.0\ref\Core.Domain.dll
+E:\19. PROJECTDEMOSOLUTION\NinePlus.Blogs\Core.Domain\obj\Debug\net5.0\Core.Domain.pdb
+E:\19. PROJECTDEMOSOLUTION\NinePlus.Blogs\Core.Domain\obj\Debug\net5.0\Core.Domain.csproj.AssemblyReference.cache

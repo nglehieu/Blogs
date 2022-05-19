@@ -1,0 +1,15 @@
+E:\19. PROJECTDEMOSOLUTION\NinePlus.Blogs\Infrastructure.Shared\bin\Debug\net5.0\Infrastructure.Shared.deps.json
+E:\19. PROJECTDEMOSOLUTION\NinePlus.Blogs\Infrastructure.Shared\bin\Debug\net5.0\Infrastructure.Shared.dll
+E:\19. PROJECTDEMOSOLUTION\NinePlus.Blogs\Infrastructure.Shared\bin\Debug\net5.0\ref\Infrastructure.Shared.dll
+E:\19. PROJECTDEMOSOLUTION\NinePlus.Blogs\Infrastructure.Shared\bin\Debug\net5.0\Infrastructure.Shared.pdb
+E:\19. PROJECTDEMOSOLUTION\NinePlus.Blogs\Infrastructure.Shared\obj\Debug\net5.0\Infrastructure.Shared.csproj.AssemblyReference.cache
+E:\19. PROJECTDEMOSOLUTION\NinePlus.Blogs\Infrastructure.Shared\obj\Debug\net5.0\Infrastructure.Shared.GeneratedMSBuildEditorConfig.editorconfig
+E:\19. PROJECTDEMOSOLUTION\NinePlus.Blogs\Infrastructure.Shared\obj\Debug\net5.0\Infrastructure.Shared.AssemblyInfoInputs.cache
+E:\19. PROJECTDEMOSOLUTION\NinePlus.Blogs\Infrastructure.Shared\obj\Debug\net5.0\Infrastructure.Shared.AssemblyInfo.cs
+E:\19. PROJECTDEMOSOLUTION\NinePlus.Blogs\Infrastructure.Shared\obj\Debug\net5.0\Infrastructure.Shared.csproj.CoreCompileInputs.cache
+E:\19. PROJECTDEMOSOLUTION\NinePlus.Blogs\Infrastructure.Shared\obj\Debug\net5.0\Infrastructure.Shared.dll
+E:\19. PROJECTDEMOSOLUTION\NinePlus.Blogs\Infrastructure.Shared\obj\Debug\net5.0\ref\Infrastructure.Shared.dll
+E:\19. PROJECTDEMOSOLUTION\NinePlus.Blogs\Infrastructure.Shared\obj\Debug\net5.0\Infrastructure.Shared.pdb
+E:\19. PROJECTDEMOSOLUTION\NinePlus.Blogs\Infrastructure.Shared\bin\Debug\net5.0\Core.Domain.dll
+E:\19. PROJECTDEMOSOLUTION\NinePlus.Blogs\Infrastructure.Shared\bin\Debug\net5.0\Core.Domain.pdb
+E:\19. PROJECTDEMOSOLUTION\NinePlus.Blogs\Infrastructure.Shared\obj\Debug\net5.0\Infrastructure.Shared.csproj.CopyComplete
