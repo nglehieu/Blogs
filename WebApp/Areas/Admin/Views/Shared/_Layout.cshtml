@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="~/admin/vendors/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="~/admin/vendors/flag-icon-css/css/flag-icon.min.css">
     <link rel="stylesheet" href="~/admin/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="~/admin/vendors/jquery-toast-plugin/jquery.toast.min.css">
     <!-- endinject -->
     <!-- plugin css for this page -->
     <link rel="stylesheet" href="~/admin/vendors/font-awesome/css/font-awesome.min.css">
@@ -397,10 +398,10 @@
                                 </div>
                                 <div class="profile-name">
                                     <p class="name">
-                                        Marina Michel
+                                        Lê Hiếu
                                     </p>
                                     <p class="designation">
-                                        Super Admin
+                                        Admin
                                     </p>
                                 </div>
                             </div>
@@ -433,8 +434,8 @@
                             </a>
                             <div class="collapse" id="sidebar-layouts">
                                 <ul class="nav flex-column sub-menu">
-                                    <li class="nav-item"> <a class="nav-link" href="~/admin/pages/layout/compact-menu.html">Tất cả quyền</a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="~/admin/pages/layout/sidebar-collapsed.html">Quản lí quyền</a></li>
+                                    <li class="nav-item"> <a class="nav-link" href="~/admin/authorization/get-all-role">Tất cả quyền</a></li>
+                                    <li class="nav-item"> <a class="nav-link" href="~/admin/users/get-all">Quản lí người dùng</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -466,12 +467,15 @@
     <script src="~/admin/js/misc.js"></script>
     <script src="~/admin/js/settings.js"></script>
     <script src="~/admin/js/todolist.js"></script>
+    <script src="~/admin/vendors/jquery-toast-plugin/jquery.toast.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- endinject -->
     <!-- Custom js for this page-->
     <script src="~/admin/js/dashboard.js"></script>
     <!-- End custom js for this page-->
+
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 
 </html>

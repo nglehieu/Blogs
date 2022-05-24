@@ -10,7 +10,8 @@ using System.Threading.Tasks;
 
 namespace WebApp.Areas.Admin.Controllers
 {
-    [Area("admin")]
+    //[Authorize(Roles = "Admin")]
+    [Area("Admin")]
     [Route("admin")]
     public class AccountController : Controller
     {

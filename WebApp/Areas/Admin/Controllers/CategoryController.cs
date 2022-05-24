@@ -13,6 +13,7 @@ namespace WebApp.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Route("admin/category")]
+    //[Authorize(Roles = "Admin")]
     public class CategoryController : Controller
     {
         private readonly ApplicationDbContext _dbContext;
@@ -28,6 +29,12 @@ namespace WebApp.Areas.Admin.Controllers
             return View(result);
         }
 
+        [HttpGet("details")]
+        public async Task<IActionResult> Details(string id)
+        {
+            var item = await _dbContext.Categories.FirstOrDefaultAsync();
+            return View(item);
+        }
         [HttpGet]
         [Route("create-category")]
         public IActionResult Create()
@@ -73,7 +80,7 @@ namespace WebApp.Areas.Admin.Controllers
             item.name = model.name;
             item.description = model.description;
 
-            _dbContext.Update(item);
+            _dbContext.Categories.Update(item);
             await _dbContext.SaveChangesAsync();
 
             return RedirectToAction("get-all", "Category");
@@ -83,7 +90,7 @@ namespace WebApp.Areas.Admin.Controllers
         public async Task<IActionResult> Delete(string id)
         {
             var item = await _dbContext.Categories.Where(s => s.uuid == id).FirstOrDefaultAsync();
-            _dbContext.Categories.Remove(item);
+             _dbContext.Categories.Remove(item);
             _dbContext.SaveChanges();
             return RedirectToAction("GetAll");
         }

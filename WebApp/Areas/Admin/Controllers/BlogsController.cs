@@ -2,6 +2,7 @@
 using Infrastructure.Persistence.Context;
 using Infrastructure.Shared.Common;
 using Infrastructure.Shared.ViewModel.Blog;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -23,12 +24,51 @@ namespace WebApp.Areas.Admin.Controllers
         }
 
         [HttpGet("get-all")]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll(string? s, string? catId, string? aut)
         {
-            var result = await _dbContext.Blogs.OrderByDescending(x => x.createdDate).ToListAsync();
-            return View(result);
+            var listCategories = await _dbContext.Categories.ToListAsync();
+            ViewBag.ListCats = listCategories;
+            var item = await (from b in _dbContext.Blogs
+                              join c in _dbContext.Categories on b.categoryId equals c.uuid
+                              where catId != null ? c.uuid == catId : c.uuid.Contains(String.Empty)
+                              && aut != null ? b.author.Contains(aut) : b.author.Contains(String.Empty)
+                              && s != null ? b.title.Contains(s) : b.title.Contains(String.Empty)
+                              orderby b.createdDate descending
+                              select new BlogsDto()
+                              {
+                                  uuid = b.uuid,
+                                  content = b.content,
+                                  author = b.author,
+                                  categoryName = c.name,
+                                  categoryId = c.uuid,
+                                  image = b.image,
+                                  title = b.title,
+                                  status = true,
+                                  createDate = DateTime.Now
+                              }).ToListAsync();
+            return View(item);
         }
 
+        [HttpGet("details")]
+        public async Task<IActionResult> Details(string id)
+        {
+            var item = await (from b in _dbContext.Blogs
+                              join c in _dbContext.Categories on b.categoryId equals c.uuid
+                              select new BlogsDto()
+                              {
+                                  uuid = b.uuid,
+                                  content = b.content,
+                                  author = b.author,
+                                  categoryName = c.name,
+                                  categoryId = c.uuid,
+                                  image = b.image,
+                                  title = b.title,
+                                  status = true,
+                                  createDate = DateTime.Now
+                              }).FirstOrDefaultAsync();
+            return View(item);
+        }
+            // Lafm toi details
         [HttpGet]
         [Route("create-blog")]
         public IActionResult Create()
@@ -36,9 +76,9 @@ namespace WebApp.Areas.Admin.Controllers
             ViewData["categoryId"] = new SelectList(_dbContext.Categories, "uuid", "name");
             return View();
         }
+
         [HttpPost]
         [Route("create-blog")]
-
         public async Task<IActionResult> Create(CreateBlogViewModel request)
         {
             if (ModelState.IsValid)
@@ -54,7 +94,7 @@ namespace WebApp.Areas.Admin.Controllers
                         uuid = Guid.NewGuid().ToString(),
                         title = request.title,
                         content = request.content,
-                        image = image, 
+                        image = image,
                         author = request.author,
                         categoryId = request.categoryId,
                         createdDate = DateTime.Now,
@@ -67,31 +107,54 @@ namespace WebApp.Areas.Admin.Controllers
             return View(request);
         }
 
+        
         [HttpGet]
-        [HttpPost("update-blog/{id}")]
+        [Route("update-blog/{id}")]
         public async Task<IActionResult> Update(string id)
         {
-            var item = await _dbContext.Blogs.Where(s => s.uuid == id).FirstOrDefaultAsync();
-            return View(item);
+            ViewData["categoryId"] = new SelectList(_dbContext.Categories, "uuid", "name");
+            var result = await _dbContext.Blogs.FirstOrDefaultAsync(x => x.uuid == id);
+            return View(result);
         }
 
         [Route("update-blog/{id}")]
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Update(string id, UpdateBlogViewModel request)
         {
-            var item = await _dbContext.Blogs.Where(s => s.uuid == id).FirstOrDefaultAsync();
+            var item = await _dbContext.Blogs.FirstOrDefaultAsync(s => s.uuid == id);
 
             item.title = request.title;
             item.content = request.content;
-            item.image = request.image;
             item.author = request.author;
             item.categoryId = request.categoryId;
+            item.createdDate = DateTime.Now;
 
-            _dbContext.Update(item);
+            _dbContext.Blogs.Update(item);
             await _dbContext.SaveChangesAsync();
 
-            return RedirectToAction("Index", "Category");
+            return RedirectToAction(nameof(GetAll));
+        }
+
+        [Route("update-image-blog/{id}")]
+        [HttpPost]
+        public async Task<IActionResult> UpdateImage(string id, IFormFile imageUrl)
+        {
+            string POST_IMAGE_PATH = "upload/posts/";
+
+            if (imageUrl != null)
+            {
+
+                var image = UploadImage.UploadImageFile(imageUrl, POST_IMAGE_PATH);
+
+                var item = await _dbContext.Blogs.FirstOrDefaultAsync(s => s.uuid == id);
+
+                item.image = image;
+
+                _dbContext.Blogs.Update(item);
+                await _dbContext.SaveChangesAsync();
+                return Redirect("/admin/blog/update-blog/" + id);
+            }
+            return Redirect("/admin/blog/update-blog/" + id);
         }
 
         [HttpGet("delete-blog/{id}")]
@@ -100,7 +163,7 @@ namespace WebApp.Areas.Admin.Controllers
             var item = await _dbContext.Blogs.Where(s => s.uuid == id).FirstOrDefaultAsync();
             _dbContext.Blogs.Remove(item);
             _dbContext.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction(nameof(GetAll));
         }
     }
 }
